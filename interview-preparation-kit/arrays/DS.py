@@ -13,6 +13,8 @@ import sys
 # The function accepts 2D_INTEGER_ARRAY arr as parameter.
 #
 
+# just brute force every possible combination since
+# the array size is stricted into only 6x6
 def hourglassSum(arr):
     maxHg = -sys.maxsize -1
     for j in range(0,6):
