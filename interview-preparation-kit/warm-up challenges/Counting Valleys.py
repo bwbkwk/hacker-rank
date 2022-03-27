@@ -22,10 +22,10 @@ def countingValleys(steps, path):
     oldSl = 0
     for i in X:      
         sl += i
-        # print("SL: ",sl, "Old SL:",oldSl)
+        # count valley if only the previous platform height is 0
+        # and the current height is -1
         if sl == -1 and oldSl == 0:
             v += 1
-            # print(v)
         oldSl = sl
     return v
         
