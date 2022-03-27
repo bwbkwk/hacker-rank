@@ -5,6 +5,7 @@ import os
 import random
 import re
 import sys
+from collections import Counter
 
 #
 # Complete the 'sockMerchant' function below.
@@ -16,15 +17,17 @@ import sys
 #
 
 def sockMerchant(n, ar):
-    dHelper = {}
+    dHelper = Counter()
+    # just count the occurences of every sock
     for x in ar:
-        if x in dHelper:
-            dHelper[x] +=1
-            continue
-        dHelper[x] = 1
+        dHelper[x] += 1
+        
     pairs = 0
+    
     for x in dHelper:
-        pairs += math.floor(dHelper[x] / 2)
+        # sock that has no pair will not contribute to pairs variable
+        # since x.5 => x by operator '//'
+        pairs += dHelper[x] // 2
     return int(pairs)
 
 if __name__ == '__main__':
