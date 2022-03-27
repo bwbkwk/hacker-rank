@@ -7,6 +7,13 @@ import re
 import sys
 
 # Complete the minimumSwaps function below.
+
+# for every i,x in list, the function work by 
+# swap the value x if it is not i not equal to x <== second line (2)
+# by doing so, you put x in its right position. 
+# There is no better way to put x in its right position than only
+# one swap if it is not in the correct position.
+# then check the condition in the second line repeatedly
 def minimumSwaps(arr):
     swapCtr = 0
     iHelper = 0
