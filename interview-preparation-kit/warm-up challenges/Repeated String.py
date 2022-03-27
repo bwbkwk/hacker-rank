@@ -16,11 +16,22 @@ import sys
 #
 
 def repeatedString(s, n):
-    s = s[:n]
+    
+    # count occurences of 'a' ini string s
     count = sum([1 if c == 'a' else 0 for c in s])
-    repeatCount = math.floor(n / len(s))
+    
+    # see how many s can fit in the length of n (rc)
+    repeatCount = n // len(s)
+    
+    # multiply count by value of rc
     count *= repeatCount
     
+    # just count the uncovered occurence of 'a'
+    # in the left substring, e.g. with s='aabc' and n=6
+    #  [1234(56)]78
+    # '[aabc(aa)]bc'
+    # count value will be 1 and the left string is 'aa' since
+    # the code below count the rest of 'a' in left substring
     for c in s[:n - repeatCount * len(s)]:
         if c == 'a':
             count+=1
