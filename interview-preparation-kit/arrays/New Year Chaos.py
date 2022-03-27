@@ -12,6 +12,11 @@ import sys
 # The function accepts INTEGER_ARRAY q as parameter.
 #
 
+# start from right to left, for every n in queue q just do swap 
+# from q[n-2] to q[n-1] and q[n-1] to q[n], if the value on the
+# left is greater than the right. after the swap check whether 
+# q[n] equal to n if no it is to chaotic since n must be bribe 
+# more than 2 times. also, dont forget to count every swap!
 def minimumBribes(q):
     L = list(reversed(range(0,len(q))))
     swapCtrAcc = 0
