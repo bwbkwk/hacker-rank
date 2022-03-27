@@ -24,8 +24,17 @@ def arrayManipulationNaive(n, queries):
     return max(L)
 
 # efficient solution
+# to understand the concept just imagine you are draw
+# a single line start with height 0 and most left position. 
+# and for every query (s,e,v), you increase the height by v
+# when you are in the position of s and keep drawing the line
+# until you are in the position of e+1 you need to come back to
+# the previous height before the addition of v by substracting it with v.     
 def arrayManipulation(n, queries):
     L = [0]*(n+2)
+    
+    # for every query (s,e,v) put the value of v
+    # in L[s] and put the negative value of v in L[e+1]
     for q in queries:
         L[q[0]] += q[2]
         L[q[1]+1] += -q[2]
