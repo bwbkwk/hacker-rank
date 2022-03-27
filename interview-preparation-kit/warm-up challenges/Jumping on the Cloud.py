@@ -14,12 +14,17 @@ import sys
 #
 
 def jumpingOnClouds(c):
-    pos = 0
-    jump = 0
+    # init initial position and jump counter to zero
+    pos, jump = 0, 0
+    
+    # while not in the finish line
     while pos != len(c)-1:
+        # just jump block, so 
         pos += 1
+        # but if it possible, then jump by 2
         if pos + 1 < len(c) and c[pos+1] == 0:
             pos += 1
+        # add jump counter
         jump+=1
         print(pos, jump)
     
