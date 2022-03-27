@@ -5,7 +5,7 @@ import os
 import random
 import re
 import sys
-
+from collections import Counter
 #
 # Complete the 'checkMagazine' function below.
 #
@@ -13,19 +13,22 @@ import sys
 #  1. STRING_ARRAY magazine
 #  2. STRING_ARRAY note
 #
-def buildDictionary(string):
-    D = dict()
+
+# helper function to create every word and its number of occurences
+# in a string
+def buildCounter(string):
+    C = Counter()
     for word in string:
-        if word in D:
-            D[word] += 1
-        else:
-            D[word] = 1
-    return D
+        C[word] += 1
+    return C
 
 def checkMagazine(magazine, note):
-    M,N = buildDictionary(magazine),buildDictionary(note)
+    M,N = buildCounter(magazine),buildCounter(note)
     
+    # for every word in note
     for word in N:
+        # if word not availabe in M or the word needed in notes is bigger 
+        # than in the magazine then the the kidnapper cant write the letter
         if word not in M or N[word] > M[word]:
             print("No")
             return
