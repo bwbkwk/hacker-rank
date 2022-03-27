@@ -12,14 +12,13 @@ import sys
 # The function accepts INTEGER_ARRAY q as parameter.
 #
 
-
 def minimumBribes(q):
     L = list(reversed(range(0,len(q))))
     swapCtrAcc = 0
     for i in L:
+        if q[i] == i+1:
+            continue
         for x in range(max(0,i-2),i):
-            if q[i] == i+1:
-                break
             if q[x+1] > q[x]:
                 continue
             q[x], q[x+1] = q[x+1], q[x]
@@ -28,9 +27,6 @@ def minimumBribes(q):
             print("Too chaotic")
             return
     print(swapCtrAcc)
-        
-            
-            
 
 if __name__ == '__main__':
     t = int(input().strip())
