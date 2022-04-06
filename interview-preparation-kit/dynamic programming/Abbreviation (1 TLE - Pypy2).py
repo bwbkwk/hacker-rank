@@ -1,9 +1,6 @@
 #!/bin/python
 
-import math
 import os
-import random
-import re
 import sys
 
 #
@@ -15,28 +12,21 @@ import sys
 #  2. STRING b
 #
 
-
-lowercase = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'}
-
 dp = {}
 
 def abbreviation(a, b):
     key = a +' '+ b
     if key in dp:
         return dp[key]
-    if len(a) < len(b):
+    if len(a) < len(b):s
         dp[key] = False
         return False
     if a == b:
         dp[key] = True
         return True
     if len(b) == 0:
-        for l in a:
-            if l not in lowercase:
-                dp[key] = False
-                return False
-        dp[key] = True        
-        return True
+        dp[key] = a.islower() 
+        return dp[key]
     if a[0] == b[0]:
         dp[key] = abbreviation(a[1:],b[1:])
         return dp[key]
