@@ -47,7 +47,7 @@ def abbreviation(a, b):
     if a[0].upper() != b[0]:
         dp[key] = abbreviation(a[1:],b)
         return dp[key]
-    dp[key] = abbreviation(a[1:],b) or abbreviation(a[0].upper() + a[1:],b) 
+    dp[key] = abbreviation(a[1:],b) or abbreviation(a[1:],b[1:]) 
     return dp[key]
 
 
