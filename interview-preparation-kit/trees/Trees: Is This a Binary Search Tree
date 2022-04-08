@@ -1,0 +1,41 @@
+""" Node is defined as
+class node:
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+"""
+
+# function to check all node on the left are less than root tree/subtree
+def checkLeft(left,value):
+    if left == None:
+        return True
+    if left.data < value:
+        return checkLeft(left.left,value) and checkLeft(left.right,value)
+    else:
+        return False
+
+# function to check all node on the left are less than root tree/subtree
+def checkRight(right,value):
+    if right == None:
+        return True
+    if right.data > value:
+        return checkRight(right.left,value) and checkRight(right.right,value)
+    else:
+        return False
+
+# actually we can use Binary Tree Inorder Traversal to and check if the result
+# is in ascending order, maybe I'll write this solution to later as this might
+# be more efficient compared to current solution.
+def checkBST(root):
+    # check current root tree/subtree, if some value on the right are less than root
+    # or some value on the left are greater than root return False
+    if not checkLeft(root.left,root.data) or not checkRight(root.right,root.data):
+        return False
+    lBST, rBST = False,False
+    # if current node pass the first check, check its left and right subtree too
+    if root.left == None or checkBST(root.left):
+        lBST = True
+    if root.right == None or checkBST(root.right):
+        rBST = True
+    return lBST and rBST
