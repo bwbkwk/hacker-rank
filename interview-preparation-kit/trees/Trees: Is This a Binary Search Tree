@@ -27,7 +27,7 @@ def checkRight(right,value):
 # actually we can use Binary Tree Inorder Traversal to and check if the result
 # is in ascending order, maybe I'll write this solution to later as this might
 # be more efficient compared to current solution.
-def checkBST(root):
+def checkBST_old(root):
     # check current root tree/subtree, if some value on the right are less than root
     # or some value on the left are greater than root return False
     if not checkLeft(root.left,root.data) or not checkRight(root.right,root.data):
@@ -39,3 +39,29 @@ def checkBST(root):
     if root.right == None or checkBST(root.right):
         rBST = True
     return lBST and rBST
+
+def inorder_traversal(root):
+    if root.left != None:
+        return inorder_traversal(root.left) + [root.data] + inorder_traversal(root.right)
+    else:
+        if root.right != None:
+            return [root.data] + inorder_traversal(root.right)
+        else:
+            return [root.data]
+
+
+def checkBST(root):
+    # traverse the tree using inorder traversal
+    # by the BST property the resulting array must 
+    # have ascending order
+    res = inorder_traversal(root)
+    
+    # if the resulting array not in ascending order,
+    # return False
+    for i in range(1,len(res)):
+        for j in range(0,i):
+            if res[j] >= res[i]:
+                return False
+            
+    # otherwise return True
+    return True
