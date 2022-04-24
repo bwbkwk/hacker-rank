@@ -5,5 +5,5 @@
 # The function accepts INTEGER_ARRAY arr as parameter.
 #
 def findMedian(arr):
- arr.sort()
- return arr[len(arr)//2]
+  arr.sort()
+  return arr[len(arr)//2]
